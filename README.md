@@ -1,173 +1,45 @@
-# Nodejs Expressjs MongoDB Ready-to-use API Project Structure
+**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
-[![Author](http://img.shields.io/badge/author-@maitraysuthar-blue.svg)](https://www.linkedin.com/in/maitray-suthar/) [![GitHub license](https://img.shields.io/github/license/maitraysuthar/rest-api-nodejs-mongodb.svg)](https://github.com/maitraysuthar/rest-api-nodejs-mongodb/blob/master/LICENSE) ![GitHub repo size](https://img.shields.io/github/repo-size/maitraysuthar/rest-api-nodejs-mongodb) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/b3eb80984adc4671988ffb22d6ad83df)](https://www.codacy.com/manual/maitraysuthar/rest-api-nodejs-mongodb?utm_source=github.com&utm_medium=referral&utm_content=maitraysuthar/rest-api-nodejs-mongodb&utm_campaign=Badge_Coverage) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3eb80984adc4671988ffb22d6ad83df)](https://www.codacy.com/manual/maitraysuthar/rest-api-nodejs-mongodb?utm_source=github.com&utm_medium=referral&utm_content=maitraysuthar/rest-api-nodejs-mongodb&utm_campaign=Badge_Grade) ![Travis (.com)](https://img.shields.io/travis/com/maitraysuthar/rest-api-nodejs-mongodb)
+When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
 
-A ready-to-use boilerplate for REST API Development with Node.js, Express, and MongoDB
+*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
 
-## Getting started
+---
 
-This is a basic API skeleton written in JavaScript ES2015. Very useful to building a RESTful web APIs for your front-end platforms like Android, iOS or JavaScript frameworks (Angular, Reactjs, etc).
+## Edit a file
 
-This project will run on **NodeJs** using **MongoDB** as database. I had tried to maintain the code structure easy as any beginner can also adopt the flow and start building an API. Project is open for suggestions, Bug reports and pull requests.
+You’ll start by editing this README file to learn how to edit a file in Bitbucket.
 
-## Advertise for Job/Work Contract
+1. Click **Source** on the left side.
+2. Click the README.md link from the list of files.
+3. Click the **Edit** button.
+4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
+5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
+6. Go back to the **Source** page.
 
-I am open for a good job or work contract. You can contact me directly on my email ([maitraysuthar@gmail.com](mailto:maitraysuthar@gmail.com "maitraysuthar@gmail.com")) or you can download my CV from my personal [website](https://maitraysuthar.github.io/portfolio/).
+---
 
-## Buy me a Coffee
+## Create a file
 
-If you consider my project as helpful stuff, You can appreciate me or my hard work and time spent to create this helpful structure with buying me a coffee.
+Next, you’ll add a new file to this repository.
 
-<a href="https://www.buymeacoffee.com/36GgOoQ2f" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+1. Click the **New file** button at the top of the **Source** page.
+2. Give the file a filename of **contributors.txt**.
+3. Enter your name in the empty file space.
+4. Click **Commit** and then **Commit** again in the dialog.
+5. Go back to the **Source** page.
 
-## Features
+Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
 
-- Basic Authentication (Register/Login with hashed password)
-- Account confirmation with 4 (Changeable) digit OTP.
-- Email helper ready just import and use.
-- JWT Tokens, make requests with a token after login with `Authorization` header with value `Bearer yourToken` where `yourToken` will be returned in Login response.
-- Pre-defined response structures with proper status codes.
-- Included CORS.
-- **Book** example with **CRUD** operations.
-- Validations added.
-- Included API collection for Postman.
-- Light-weight project.
-- Test cases with [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
-- Code coverage with [Istanbuljs (nyc)](https://istanbul.js.org/).
-- Included CI (Continuous Integration) with [Travis CI](https://travis-ci.org).
-- Linting with [Eslint](https://eslint.org/).
+---
 
-## Software Requirements
+## Clone a repository
 
-- Node.js **8+**
-- MongoDB **3.6+** (Recommended **4+**)
+Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
 
-## How to install
+1. You’ll see the clone button under the **Source** heading. Click that button.
+2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
+3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
+4. Open the directory you just created to see your repository’s files.
 
-### Using Git (recommended)
-
-1.  Clone the project from github. Change "myproject" to your project name.
-
-```bash
-git clone https://github.com/maitraysuthar/rest-api-nodejs-mongodb.git ./myproject
-```
-
-### Using manual download ZIP
-
-1.  Download repository
-2.  Uncompress to your desired directory
-
-### Install npm dependencies after installing (Git or manual download)
-
-```bash
-cd myproject
-npm install
-```
-
-### Setting up environments
-
-1.  You will find a file named `.env.example` on root directory of project.
-2.  Create a new file by copying and pasting the file and then renaming it to just `.env`
-    ```bash
-    cp .env.example .env
-    ```
-3.  The file `.env` is already ignored, so you never commit your credentials.
-4.  Change the values of the file to your environment. Helpful comments added to `.env.example` file to understand the constants.
-
-## Project structure
-
-```sh
-.
-├── app.js
-├── package.json
-├── bin
-│   └── www
-├── controllers
-│   ├── AuthController.js
-│   └── BookController.js
-├── models
-│   ├── BookModel.js
-│   └── UserModel.js
-├── routes
-│   ├── api.js
-│   ├── auth.js
-│   └── book.js
-├── middlewares
-│   ├── jwt.js
-├── helpers
-│   ├── apiResponse.js
-│   ├── constants.js
-│   ├── mailer.js
-│   └── utility.js
-├── test
-│   ├── testConfig.js
-│   ├── auth.js
-│   └── book.js
-└── public
-    ├── index.html
-    └── stylesheets
-        └── style.css
-```
-
-## How to run
-
-### Running API server locally
-
-```bash
-npm run dev
-```
-
-You will know server is running by checking the output of the command `npm run dev`
-
-```bash
-Connected to mongodb:YOUR_DB_CONNECTION_STRING
-App is running ...
-
-Press CTRL + C to stop the process.
-```
-
-**Note:** `YOUR_DB_CONNECTION_STRING` will be your MongoDB connection string.
-
-### Creating new models
-
-If you need to add more models to the project just create a new file in `/models/` and use them in the controllers.
-
-### Creating new routes
-
-If you need to add more routes to the project just create a new file in `/routes/` and add it in `/routes/api.js` it will be loaded dynamically.
-
-### Creating new controllers
-
-If you need to add more controllers to the project just create a new file in `/controllers/` and use them in the routes.
-
-## Tests
-
-### Running Test Cases
-
-```bash
-npm test
-```
-
-You can set custom command for test at `package.json` file inside `scripts` property. You can also change timeout for each assertion with `--timeout` parameter of mocha command.
-
-### Creating new tests
-
-If you need to add more test cases to the project just create a new file in `/test/` and run the command.
-
-## ESLint
-
-### Running Eslint
-
-```bash
-npm run lint
-```
-
-You can set custom rules for eslint in `.eslintrc.json` file, Added at project root.
-
-## Bugs or improvements
-
-Every project needs improvements, Feel free to report any bugs or improvements. Pull requests are always welcome.
-
-## License
-
-This project is open-sourced software licensed under the MIT License. See the LICENSE file for more information.
+Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
