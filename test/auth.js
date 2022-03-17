@@ -21,8 +21,7 @@ describe("Auth", () => {
 
 	// Prepare data for testing
 	const testData = {
-		"firstName":"test",
-		"lastName":"testing",
+		"fullName":"test",
 		"password":"Test@123",
 		"email":"maitraysuthar@test12345.com"
 	};

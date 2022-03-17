@@ -6,14 +6,13 @@ const apiResponse = require("../helpers/apiResponse");
 const utility = require("../helpers/utility");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const mailer = require("../helpers/mailer");
+// const mailer = require("../helpers/mailer");
 const { constants } = require("../helpers/constants");
 
 /**
  * User registration.
  *
- * @param {string}      firstName
- * @param {string}      lastName
+ * @param {string}      fullName
  * @param {string}      email
  * @param {string}      password
  *
@@ -21,18 +20,12 @@ const { constants } = require("../helpers/constants");
  */
 exports.register = [
   // Validate fields.
-  body("firstName")
+  body("fullName")
     .isLength({ min: 1 })
     .trim()
-    .withMessage("First name must be specified.")
+    .withMessage("Full name must be specified.")
     .isAlphanumeric()
-    .withMessage("First name has non-alphanumeric characters."),
-  body("lastName")
-    .isLength({ min: 1 })
-    .trim()
-    .withMessage("Last name must be specified.")
-    .isAlphanumeric()
-    .withMessage("Last name has non-alphanumeric characters."),
+    .withMessage("Full name has non-alphanumeric characters."),
   body("email")
     .isLength({ min: 1 })
     .trim()
@@ -51,8 +44,7 @@ exports.register = [
     .trim()
     .withMessage("Password must be 6 characters or greater."),
   // Sanitize fields.
-  sanitizeBody("firstName").escape(),
-  sanitizeBody("lastName").escape(),
+  sanitizeBody("fullName").escape(),
   sanitizeBody("email").escape(),
   sanitizeBody("password").escape(),
   // Process request after validation and sanitization.
@@ -74,8 +66,7 @@ exports.register = [
           let otp = utility.randomNumber(4);
           // Create User object with escaped and trimmed data
           var user = new UserModel({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            fullName: req.body.fullName,
             email: req.body.email,
             password: hash,
             confirmOTP: otp,
@@ -84,14 +75,14 @@ exports.register = [
           let html =
             "<p>Please Confirm your Account.</p><p>OTP: " + otp + "</p>";
           // Send confirmation email
-          mailer
-            .send(
-              constants.confirmEmails.from,
-              req.body.email,
-              "Confirm Account",
-              html
-            )
-            .then(function () {
+          // mailer
+          //   .send(
+          //     constants.confirmEmails.from,
+          //     req.body.email,
+          //     "Confirm Account",
+          //     html
+          //   )
+          //   .then(function () {
               // Save user.
               user.save(function (err) {
                 if (err) {
@@ -99,8 +90,7 @@ exports.register = [
                 }
                 let userData = {
                   _id: user._id,
-                  firstName: user.firstName,
-                  lastName: user.lastName,
+                  fullName: user.fullName,
                   email: user.email,
                 };
                 return apiResponse.successResponseWithData(
@@ -109,11 +99,13 @@ exports.register = [
                   userData
                 );
               });
-            })
-            .catch((err) => {
-              console.log(err);
-              return apiResponse.ErrorResponse(res, err);
-            });
+
+
+            // })
+            // .catch((err) => {
+            //   console.log(err);
+            //   return apiResponse.ErrorResponse(res, err);
+            // });
         });
       }
     } catch (err) {
@@ -145,9 +137,6 @@ exports.login = [
   sanitizeBody("email").escape(),
   sanitizeBody("password").escape(),
   (req, res) => {
-    console.log("Inside login...");
-    console.log(req);
-
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -171,8 +160,7 @@ exports.login = [
                     if (user.status) {
                       let userData = {
                         _id: user._id,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
+                        fullName: user.fullName,
                         email: user.email,
                       };
                       //Prepare JWT token for authentication
@@ -217,8 +205,6 @@ exports.login = [
         });
       }
     } catch (err) {
-      console.log("Inside login err...");
-      console.log(err);
       return apiResponse.ErrorResponse(res, err);
     }
   },
@@ -332,15 +318,15 @@ exports.resendConfirmOtp = [
               let html =
                 "<p>Please Confirm your Account.</p><p>OTP: " + otp + "</p>";
               // Send confirmation email
-              mailer
-                .send(
-                  constants.confirmEmails.from,
-                  req.body.email,
-                  "Confirm Account",
-                  html
-                )
-                .then(function () {
-                  user.isConfirmed = 0;
+              // mailer
+              //   .send(
+              //     constants.confirmEmails.from,
+              //     req.body.email,
+              //     "Confirm Account",
+              //     html
+              //   )
+              //   .then(function () {
+                  user.isConfirmed = 1;
                   user.confirmOTP = otp;
                   // Save user.
                   user.save(function (err) {
@@ -352,7 +338,8 @@ exports.resendConfirmOtp = [
                       "Confirm otp sent."
                     );
                   });
-                });
+
+                // });
             } else {
               return apiResponse.unauthorizedResponse(
                 res,
