@@ -23,9 +23,9 @@ exports.register = [
   body("fullName")
     .isLength({ min: 1 })
     .trim()
-    .withMessage("Full name must be specified.")
-    .isAlphanumeric()
-    .withMessage("Full name has non-alphanumeric characters."),
+    .withMessage("Full name must be specified."),
+    // .isAlphanumeric()
+    // .withMessage("Full name has non-alphanumeric characters.")
   body("email")
     .isLength({ min: 1 })
     .trim()
